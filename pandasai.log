@@ -1617,3 +1617,2017 @@ min      0.000000    1.000000    0.420000    0.000000    0.000000    0.000000
 75%      1.000000    3.000000   38.000000    1.000000    0.000000   31.000000
 max      1.000000    3.000000   80.000000    8.000000    6.000000  512.329200}
 2024-10-22 21:28:10 [INFO] Executing Step 8: ResultParsing
+2024-10-22 21:45:51 [INFO] Question: give me two components that i can di binary distillation with 
+2024-10-22 21:45:51 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2024-10-22 21:45:51 [INFO] Prompt ID: af0d05ba-475a-40cb-822f-1395131f7a88
+2024-10-22 21:45:51 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-22 21:45:51 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-22 21:45:51 [INFO] Executing Step 1: CacheLookup
+2024-10-22 21:45:51 [INFO] Executing Step 2: PromptGeneration
+2024-10-22 21:45:51 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C11H24O,bromoethane,6.8407,1205.079,219.62,75,160.0
+CH2O2,m-dichlorobenzene,8.1182,1138.91,232.42,27,166.0
+C10H14,"2,2-dimethypropane",7.0319,1427.77,216.01,-111,287.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ give me two components that i can di binary distillation with 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-22 21:45:51 [INFO] Executing Step 3: CodeGenerator
+2024-10-22 21:45:51 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:45:52 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C11H24O,bromoethane,6.8407,1205.079,219.62,75,160.0
+CH2O2,m-dichlorobenzene,8.1182,1138.91,232.42,27,166.0
+C10H14,"2,2-dimethypropane",7.0319,1427.77,216.01,-111,287.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ give me two components that i can di binary distillation with 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-22 21:45:52 [INFO] Code generated:
+            ```
+            # Import required dependencies
+import pandas as pd
+
+# Initialize result variable
+result = {}
+
+# Loop through dataframes in the list
+for df in dfs:
+    # Get the column names
+    columns = df.columns
+    
+    # Find the compounds that can be distilled using binary distillation
+    binary_distillable = df[(df['A'] > 0) & (df['B'] > 0)]
+    
+    # Get the first two rows of the binary_distillable dataframe
+    binary_distillable = binary_distillable.head(2)
+    
+    # Convert the dataframe to a dictionary
+    distillable_compounds = binary_distillable.to_dict('records')
+    
+    # Update the result variable
+    result = {"type": "dataframe", "value": distillable_compounds}
+
+print(result)
+            ```
+            
+2024-10-22 21:45:52 [INFO] Executing Step 4: CachePopulation
+2024-10-22 21:45:52 [INFO] Executing Step 5: CodeCleaning
+2024-10-22 21:45:52 [INFO] 
+Code running:
+```
+result = {}
+for df in dfs:
+    columns = df.columns
+    binary_distillable = df[(df['A'] > 0) & (df['B'] > 0)]
+    binary_distillable = binary_distillable.head(2)
+    distillable_compounds = binary_distillable.to_dict('records')
+    result = {'type': 'dataframe', 'value': distillable_compounds}
+print(result)
+        ```
+2024-10-22 21:45:52 [INFO] Executing Step 6: CodeExecution
+2024-10-22 21:45:52 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'list'> must match with type dataframe
+
+2024-10-22 21:45:52 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-22 21:45:52 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-22 21:45:52 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-22 21:45:52 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C11H24O,bromoethane,6.8407,1205.079,219.62,75,160.0
+CH2O2,m-dichlorobenzene,8.1182,1138.91,232.42,27,166.0
+C10H14,"2,2-dimethypropane",7.0319,1427.77,216.01,-111,287.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give me two components that i can di binary distillation with 
+
+You generated this python code:
+result = {}
+for df in dfs:
+    columns = df.columns
+    binary_distillable = df[(df['A'] > 0) & (df['B'] > 0)]
+    binary_distillable = binary_distillable.head(2)
+    distillable_compounds = binary_distillable.to_dict('records')
+    result = {'type': 'dataframe', 'value': distillable_compounds}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'list'> must match with type dataframe
+
+
+Fix the python code above and return the new python code:
+2024-10-22 21:45:52 [INFO] Executing Step 1: CodeGenerator
+2024-10-22 21:45:52 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:45:52 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C11H24O,bromoethane,6.8407,1205.079,219.62,75,160.0
+CH2O2,m-dichlorobenzene,8.1182,1138.91,232.42,27,166.0
+C10H14,"2,2-dimethypropane",7.0319,1427.77,216.01,-111,287.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give me two components that i can di binary distillation with 
+
+You generated this python code:
+result = {}
+for df in dfs:
+    columns = df.columns
+    binary_distillable = df[(df['A'] > 0) & (df['B'] > 0)]
+    binary_distillable = binary_distillable.head(2)
+    distillable_compounds = binary_distillable.to_dict('records')
+    result = {'type': 'dataframe', 'value': distillable_compounds}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'list'> must match with type dataframe
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-22 21:45:52 [INFO] Code generated:
+            ```
+            result = {'type': 'dataframe'}
+binary_distillable = dfs[0][dfs[0]['A'] > 0 & dfs[0]['B'] > 0].head(2)
+result['value'] = binary_distillable
+print(result)
+            ```
+            
+2024-10-22 21:45:52 [INFO] Executing Step 2: CodeCleaning
+2024-10-22 21:45:52 [INFO] 
+Code running:
+```
+result = {'type': 'dataframe'}
+binary_distillable = dfs[0][dfs[0]['A'] > 0 & dfs[0]['B'] > 0].head(2)
+result['value'] = binary_distillable
+print(result)
+        ```
+2024-10-22 21:45:52 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 362, in na_logical_op
+    result = op(x, y)
+             ^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\roperator.py", line 54, in rand_
+    return operator.and_(right, left)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ufunc 'bitwise_and' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 376, in na_logical_op
+    result = libops.scalar_binop(x, y, op)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "ops.pyx", line 180, in pandas._libs.ops.scalar_binop
+ValueError: Buffer dtype mismatch, expected 'Python object' but got 'double'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\arraylike.py", line 74, in __rand__
+    return self._logical_method(other, roperator.rand_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\series.py", line 6130, in _logical_method
+    res_values = ops.logical_op(lvalues, rvalues, op)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 454, in logical_op
+    res_values = na_logical_op(lvalues, rvalues, op)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 385, in na_logical_op
+    raise TypeError(
+TypeError: Cannot perform 'rand_' with a dtyped [float64] array and scalar of type [bool]
+
+2024-10-22 21:45:52 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-22 21:45:52 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-22 21:45:52 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-22 21:45:52 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C11H24O,bromoethane,6.8407,1205.079,219.62,75,160.0
+CH2O2,m-dichlorobenzene,8.1182,1138.91,232.42,27,166.0
+C10H14,"2,2-dimethypropane",7.0319,1427.77,216.01,-111,287.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give me two components that i can di binary distillation with 
+
+You generated this python code:
+result = {'type': 'dataframe'}
+binary_distillable = dfs[0][dfs[0]['A'] > 0 & dfs[0]['B'] > 0].head(2)
+result['value'] = binary_distillable
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 362, in na_logical_op
+    result = op(x, y)
+             ^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\roperator.py", line 54, in rand_
+    return operator.and_(right, left)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ufunc 'bitwise_and' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 376, in na_logical_op
+    result = libops.scalar_binop(x, y, op)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "ops.pyx", line 180, in pandas._libs.ops.scalar_binop
+ValueError: Buffer dtype mismatch, expected 'Python object' but got 'double'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\arraylike.py", line 74, in __rand__
+    return self._logical_method(other, roperator.rand_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\series.py", line 6130, in _logical_method
+    res_values = ops.logical_op(lvalues, rvalues, op)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 454, in logical_op
+    res_values = na_logical_op(lvalues, rvalues, op)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 385, in na_logical_op
+    raise TypeError(
+TypeError: Cannot perform 'rand_' with a dtyped [float64] array and scalar of type [bool]
+
+
+Fix the python code above and return the new python code:
+2024-10-22 21:45:52 [INFO] Executing Step 1: CodeGenerator
+2024-10-22 21:45:53 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:45:53 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C11H24O,bromoethane,6.8407,1205.079,219.62,75,160.0
+CH2O2,m-dichlorobenzene,8.1182,1138.91,232.42,27,166.0
+C10H14,"2,2-dimethypropane",7.0319,1427.77,216.01,-111,287.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give me two components that i can di binary distillation with 
+
+You generated this python code:
+result = {'type': 'dataframe'}
+binary_distillable = dfs[0][dfs[0]['A'] > 0 & dfs[0]['B'] > 0].head(2)
+result['value'] = binary_distillable
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 362, in na_logical_op
+    result = op(x, y)
+             ^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\roperator.py", line 54, in rand_
+    return operator.and_(right, left)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ufunc 'bitwise_and' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 376, in na_logical_op
+    result = libops.scalar_binop(x, y, op)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "ops.pyx", line 180, in pandas._libs.ops.scalar_binop
+ValueError: Buffer dtype mismatch, expected 'Python object' but got 'double'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\arraylike.py", line 74, in __rand__
+    return self._logical_method(other, roperator.rand_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\series.py", line 6130, in _logical_method
+    res_values = ops.logical_op(lvalues, rvalues, op)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 454, in logical_op
+    res_values = na_logical_op(lvalues, rvalues, op)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\ops\array_ops.py", line 385, in na_logical_op
+    raise TypeError(
+TypeError: Cannot perform 'rand_' with a dtyped [float64] array and scalar of type [bool]
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-22 21:45:53 [INFO] Code generated:
+            ```
+            Python
+result = {'type': 'dataframe'}
+binary_distillable = dfs[0][(dfs[0]['A'] > 0) & (dfs[0]['B'] > 0)].head(2)
+result['value'] = binary_distillable
+print(result)
+            ```
+            
+2024-10-22 21:45:53 [INFO] Executing Step 2: CodeCleaning
+2024-10-22 21:45:53 [INFO] 
+Code running:
+```
+Python
+result = {'type': 'dataframe'}
+binary_distillable = dfs[0][(dfs[0]['A'] > 0) & (dfs[0]['B'] > 0)].head(2)
+result['value'] = binary_distillable
+print(result)
+        ```
+2024-10-22 21:45:53 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+2024-10-22 21:45:53 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-22 21:45:53 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-22 21:45:53 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-22 21:45:53 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C11H24O,bromoethane,6.8407,1205.079,219.62,75,160.0
+CH2O2,m-dichlorobenzene,8.1182,1138.91,232.42,27,166.0
+C10H14,"2,2-dimethypropane",7.0319,1427.77,216.01,-111,287.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give me two components that i can di binary distillation with 
+
+You generated this python code:
+Python
+result = {'type': 'dataframe'}
+binary_distillable = dfs[0][(dfs[0]['A'] > 0) & (dfs[0]['B'] > 0)].head(2)
+result['value'] = binary_distillable
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+
+Fix the python code above and return the new python code:
+2024-10-22 21:45:53 [INFO] Executing Step 1: CodeGenerator
+2024-10-22 21:45:53 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:45:53 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C11H24O,bromoethane,6.8407,1205.079,219.62,75,160.0
+CH2O2,m-dichlorobenzene,8.1182,1138.91,232.42,27,166.0
+C10H14,"2,2-dimethypropane",7.0319,1427.77,216.01,-111,287.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give me two components that i can di binary distillation with 
+
+You generated this python code:
+Python
+result = {'type': 'dataframe'}
+binary_distillable = dfs[0][(dfs[0]['A'] > 0) & (dfs[0]['B'] > 0)].head(2)
+result['value'] = binary_distillable
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-22 21:45:53 [INFO] Code generated:
+            ```
+            import pandas as pd
+
+dfs = pd.DataFrame({
+    'Formula', 'Compound', 'A', 'B', 'C', 'Tmin', 'Tmax'},
+    data=[
+        ['C11H24O', 'bromoethane', 6.8407, 1205.079, 219.62, 75, 160.0],
+        ['CH2O2', 'm-dichlorobenzene', 8.1182, 1138.91, 232.42, 27, 166.0],
+        ['C10H14', '2,2-dimethypropane', 7.0319, 1427.77, 216.01, -111, 287.0]
+    ])
+
+binary_distillable = dfs[(dfs['A'] > 0) & (dfs['B'] > 0)].head(2)
+print(binary_distillable)
+            ```
+            
+2024-10-22 21:45:53 [INFO] Executing Step 2: CodeCleaning
+2024-10-22 21:45:53 [INFO] 
+Code running:
+```
+binary_distillable = dfs[(dfs['A'] > 0) & (dfs['B'] > 0)].head(2)
+print(binary_distillable)
+        ```
+2024-10-22 21:45:53 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+TypeError: list indices must be integers or slices, not str
+
+2024-10-22 21:45:53 [ERROR] Pipeline failed on step 6: list indices must be integers or slices, not str
+2024-10-22 21:45:59 [INFO] Question: give me two components that i can do binary distillation with 
+2024-10-22 21:45:59 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2024-10-22 21:45:59 [INFO] Prompt ID: 35473743-e7a4-4708-8f69-7697f0f2e71a
+2024-10-22 21:45:59 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-22 21:45:59 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-22 21:45:59 [INFO] Executing Step 1: CacheLookup
+2024-10-22 21:45:59 [INFO] Executing Step 2: PromptGeneration
+2024-10-22 21:45:59 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C2H4S,1-heptadecanethiol,7.24379,1134.675,164.594,44,207.0
+C9H10,p-dichlorobenzene,6.83561,1296.4,212.568,2,176.0
+C3H6BR2,"3,6-dimethyloctane",6.95206,504.49,233.851,178,209.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ give me two components that i can do binary distillation with 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-22 21:45:59 [INFO] Executing Step 3: CodeGenerator
+2024-10-22 21:46:00 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:46:00 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C2H4S,1-heptadecanethiol,7.24379,1134.675,164.594,44,207.0
+C9H10,p-dichlorobenzene,6.83561,1296.4,212.568,2,176.0
+C3H6BR2,"3,6-dimethyloctane",6.95206,504.49,233.851,178,209.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ give me two components that i can do binary distillation with 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-22 21:46:00 [INFO] Code generated:
+            ```
+            # Import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the dataframes
+dfs = [pd.DataFrame({
+    "Formula", "Compound", "A", "B", "C", "Tmin", "Tmax"
+}, {
+    "Formula": ["C2H4S", "C9H10", "C3H6BR2"],
+    "Compound": ["1-heptadecanethiol", "p-dichlorobenzene", "3,6-dimethyloctane"],
+    "A": [7.24379, 6.83561, 6.95206],
+    "B": [1134.675, 1296.4, 504.49],
+    "C": [164.594, 212.568, 233.851],
+    "Tmin": [44, 2, 178],
+    "Tmax": [207.0, 176.0, 209.0]
+})
+]
+
+# Filter the dataframes to get two components that can be used for binary distillation
+result = {"type": "dataframe", "value": dfs[0][dfs[0]["A"] < dfs[0]["B"]]}
+print(result)
+            ```
+            
+2024-10-22 21:46:00 [INFO] Executing Step 4: CachePopulation
+2024-10-22 21:46:00 [INFO] Executing Step 5: CodeCleaning
+2024-10-22 21:46:00 [INFO] 
+Code running:
+```
+result = {'type': 'dataframe', 'value': dfs[0][dfs[0]['A'] < dfs[0]['B']]}
+print(result)
+        ```
+2024-10-22 21:46:00 [INFO] Executing Step 6: CodeExecution
+2024-10-22 21:46:00 [INFO] Executing Step 7: ResultValidation
+2024-10-22 21:46:00 [INFO] Answer: {'type': 'dataframe', 'value':       Formula                 Compound        A         B        C  Tmin   Tmax
+0     H2O_low                water_low  8.07131  1730.630  233.426     1  100.0
+1    H2O_high               water_high  8.14019  1810.940  244.485    99  374.0
+2        CCL4     carbon-tetrachloride  6.89410  1219.580  227.170   -20  101.0
+3       CCL3F   trichlorofluoromethane  6.88430  1043.010  236.860   -33   27.0
+4      CCL2F2  dichlorodifluoromethane  6.68619   782.072  235.377  -119  -30.0
+..        ...                      ...      ...       ...      ...   ...    ...
+694    C21H36      1-phenylpentadecane  7.11400  2067.000  122.000   216  403.0
+695    C21H42  1-cyclopentylhexadecane  7.10300  2048.000  121.000   215  401.0
+696    C21H42  1-cyclohexylpentadecane  7.07200  2078.000  129.000   213  404.0
+697    C22H38       1-phenylhexadecane  7.14000  2095.000  114.000   227  415.0
+698    C22H44   1-cyclohexylhexadecane  7.07400  2099.000  122.000   224  416.0
+
+[699 rows x 7 columns]}
+2024-10-22 21:46:00 [INFO] Executing Step 8: ResultParsing
+2024-10-22 21:46:41 [INFO] Question: wich component have the biggest temperature
+2024-10-22 21:46:41 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2024-10-22 21:46:41 [INFO] Prompt ID: 6e041539-f12f-46b8-8b6e-0337362fdb7d
+2024-10-22 21:46:41 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-22 21:46:41 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-22 21:46:41 [INFO] Executing Step 1: CacheLookup
+2024-10-22 21:46:41 [INFO] Executing Step 2: PromptGeneration
+2024-10-22 21:46:41 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C5H12S,octadecane,7.0976,1432.15,210.91,-153,415.0
+C6H5I,"1,2-dibromopropane",6.80398,1180.707,214.995,52,215.0
+C2H2F2,o-diethylbenzene,7.58777,1817.8,267.777,62,151.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ wich component have the biggest temperature
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-22 21:46:41 [INFO] Executing Step 3: CodeGenerator
+2024-10-22 21:46:42 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:46:42 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C5H12S,octadecane,7.0976,1432.15,210.91,-153,415.0
+C6H5I,"1,2-dibromopropane",6.80398,1180.707,214.995,52,215.0
+C2H2F2,o-diethylbenzene,7.58777,1817.8,267.777,62,151.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ wich component have the biggest temperature
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-22 21:46:42 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Initialize the result variable
+result = {}
+
+# Loop through each dataframe in the list
+for df in dfs:
+    # Extract the columns for Tmin and Tmax
+    Tmin = df['Tmin']
+    Tmax = df['Tmax']
+    
+    # Calculate the temperature range for each compound
+    temp_range = (Tmax - Tmin)
+    
+    # Identify the compound with the biggest temperature range
+    max_temp_range = temp_range.max()
+    max_temp_range_comp = temp_range[temp_range == max_temp_range].index[0]
+    
+    # Check if this is the first result
+    if 'result' in result:
+        result['type'] = "dataframe"
+        result['value'] = df[df['Formula'] == max_temp_range_comp]
+    else:
+        result['type'] = "string"
+        result['value'] = f"The component with the biggest temperature range is {max_temp_range_comp}."
+    
+    # Optional: Plot the temperature ranges
+    if 'result' in result and result['type'] == "dataframe":
+        plt.figure(figsize=(10,6))
+        plt.xlabel('Compound')
+        plt.ylabel('Temperature Range (K)')
+        plt.bar(df['Formula'], temp_range)
+        plt.title('Temperature Range for Each Compound')
+        plt.savefig('temp_chart.png')
+        result['type'] = "plot"
+        result['value'] = 'temp_chart.png'
+            ```
+            
+2024-10-22 21:46:42 [INFO] Executing Step 4: CachePopulation
+2024-10-22 21:46:42 [INFO] Executing Step 5: CodeCleaning
+2024-10-22 21:46:42 [INFO] Saving charts to C:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\exports\charts\temp_chart.png
+2024-10-22 21:46:42 [INFO] 
+Code running:
+```
+result = {}
+for df in dfs:
+    Tmin = df['Tmin']
+    Tmax = df['Tmax']
+    temp_range = Tmax - Tmin
+    max_temp_range = temp_range.max()
+    max_temp_range_comp = temp_range[temp_range == max_temp_range].index[0]
+    if 'result' in result:
+        result['type'] = 'dataframe'
+        result['value'] = df[df['Formula'] == max_temp_range_comp]
+    else:
+        result['type'] = 'string'
+        result['value'] = f'The component with the biggest temperature range is {max_temp_range_comp}.'
+    if 'result' in result and result['type'] == 'dataframe':
+        plt.figure(figsize=(10, 6))
+        plt.xlabel('Compound')
+        plt.ylabel('Temperature Range (K)')
+        plt.bar(df['Formula'], temp_range)
+        plt.title('Temperature Range for Each Compound')
+        plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+        result['type'] = 'plot'
+        result['value'] = 'C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png'
+        ```
+2024-10-22 21:46:42 [INFO] Executing Step 6: CodeExecution
+2024-10-22 21:46:42 [INFO] Executing Step 7: ResultValidation
+2024-10-22 21:46:42 [INFO] Answer: {'type': 'string', 'value': 'The component with the biggest temperature range is 1.'}
+2024-10-22 21:46:42 [INFO] Executing Step 8: ResultParsing
+2024-10-22 21:47:10 [INFO] Question: give a full statistical analysis to the dataframe
+2024-10-22 21:47:10 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2024-10-22 21:47:10 [INFO] Prompt ID: e29f36ba-3c0a-4686-81df-56cf52f19686
+2024-10-22 21:47:10 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-22 21:47:10 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-22 21:47:10 [INFO] Executing Step 1: CacheLookup
+2024-10-22 21:47:10 [INFO] Executing Step 2: PromptGeneration
+2024-10-22 21:47:10 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C14H26,methyl-nonadecyl-sulfide,6.83287,1315.084,235.009,177,388.0
+C2F4,ethyl-nonyl-sulfide,7.2698,405.42,211.72,24,141.0
+C3H9N,1-cyclohexylundecane,7.73719,1404.7,195.848,209,277.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ give a full statistical analysis to the dataframe
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-22 21:47:10 [INFO] Executing Step 3: CodeGenerator
+2024-10-22 21:47:11 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:47:11 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C14H26,methyl-nonadecyl-sulfide,6.83287,1315.084,235.009,177,388.0
+C2F4,ethyl-nonyl-sulfide,7.2698,405.42,211.72,24,141.0
+C3H9N,1-cyclohexylundecane,7.73719,1404.7,195.848,209,277.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ give a full statistical analysis to the dataframe
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-22 21:47:11 [INFO] Code generated:
+            ```
+            import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the dataframe
+dfs = pd.DataFrame([
+    {"Formula": "C14H26", "Compound": "methyl-nonadecyl-sulfide", "A": 6.83287, "B": 1315.084, "C": 235.009, "Tmin": 177, "Tmax": 388.0},
+    {"Formula": "C2F4", "Compound": "ethyl-nonyl-sulfide", "A": 7.2698, "B": 405.42, "C": 211.72, "Tmin": 24, "Tmax": 141.0},
+    {"Formula": "C3H9N", "Compound": "1-cyclohexylundecane", "A": 7.73719, "B": 1404.7, "C": 195.848, "Tmin": 209, "Tmax": 277.0}
+])
+
+# Statistical analysis
+print("Summary Statistics:")
+print(dfs.describe())
+
+print("\nCorrelation Matrix:")
+print(dfs.corr())
+
+print("\nMean and Standard Deviation:")
+print(dfs.mean())
+print(dfs.std())
+
+print("\nMedian and Quartiles:")
+print(dfs.median())
+print(dfs.quantile(0.25))
+print(dfs.quantile(0.75))
+
+# Plot the data
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x="Tmin", y="Tmax", data=dfs)
+plt.title("Temperature Range")
+plt.xlabel("Tmin (°C)")
+plt.ylabel("Tmax (°C)")
+plt.savefig("temperature_range.png")
+
+# Result variable
+result = {
+    "type": "dataframe",
+    "value": dfs
+}
+            ```
+            
+2024-10-22 21:47:11 [INFO] Executing Step 4: CachePopulation
+2024-10-22 21:47:11 [INFO] Executing Step 5: CodeCleaning
+2024-10-22 21:47:11 [INFO] Saving charts to C:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\exports\charts\temp_chart.png
+2024-10-22 21:47:11 [INFO] 
+Code running:
+```
+print('Summary Statistics:')
+print(dfs.describe())
+print("""
+Correlation Matrix:""")
+print(dfs.corr())
+print("""
+Mean and Standard Deviation:""")
+print(dfs.mean())
+print(dfs.std())
+print("""
+Median and Quartiles:""")
+print(dfs.median())
+print(dfs.quantile(0.25))
+print(dfs.quantile(0.75))
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs)
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result = {'type': 'dataframe', 'value': dfs}
+        ```
+2024-10-22 21:47:11 [INFO] Executing Step 6: CodeExecution
+2024-10-22 21:47:11 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+AttributeError: 'list' object has no attribute 'describe'
+
+2024-10-22 21:47:11 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-22 21:47:11 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-22 21:47:11 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-22 21:47:11 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C14H26,methyl-nonadecyl-sulfide,6.83287,1315.084,235.009,177,388.0
+C2F4,ethyl-nonyl-sulfide,7.2698,405.42,211.72,24,141.0
+C3H9N,1-cyclohexylundecane,7.73719,1404.7,195.848,209,277.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give a full statistical analysis to the dataframe
+
+You generated this python code:
+print('Summary Statistics:')
+print(dfs.describe())
+print("""
+Correlation Matrix:""")
+print(dfs.corr())
+print("""
+Mean and Standard Deviation:""")
+print(dfs.mean())
+print(dfs.std())
+print("""
+Median and Quartiles:""")
+print(dfs.median())
+print(dfs.quantile(0.25))
+print(dfs.quantile(0.75))
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs)
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result = {'type': 'dataframe', 'value': dfs}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+AttributeError: 'list' object has no attribute 'describe'
+
+
+Fix the python code above and return the new python code:
+2024-10-22 21:47:11 [INFO] Executing Step 1: CodeGenerator
+2024-10-22 21:47:11 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:47:11 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C14H26,methyl-nonadecyl-sulfide,6.83287,1315.084,235.009,177,388.0
+C2F4,ethyl-nonyl-sulfide,7.2698,405.42,211.72,24,141.0
+C3H9N,1-cyclohexylundecane,7.73719,1404.7,195.848,209,277.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give a full statistical analysis to the dataframe
+
+You generated this python code:
+print('Summary Statistics:')
+print(dfs.describe())
+print("""
+Correlation Matrix:""")
+print(dfs.corr())
+print("""
+Mean and Standard Deviation:""")
+print(dfs.mean())
+print(dfs.std())
+print("""
+Median and Quartiles:""")
+print(dfs.median())
+print(dfs.quantile(0.25))
+print(dfs.quantile(0.75))
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs)
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result = {'type': 'dataframe', 'value': dfs}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+AttributeError: 'list' object has no attribute 'describe'
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-22 21:47:11 [INFO] Code generated:
+            ```
+            print('Summary Statistics:')
+print(dfs[0].describe())
+print("""
+Correlation Matrix:""")
+print(dfs[0].corr())
+print("""
+Mean and Standard Deviation:""")
+print(dfs[0].mean())
+print(dfs[0].std())
+print("""
+Median and Quartiles:""")
+print(dfs[0].median())
+print(dfs[0].quantile(0.25))
+print(dfs[0].quantile(0.75))
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs[0])
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result = {'type': 'dataframe', 'value': dfs[0]}
+            ```
+            
+2024-10-22 21:47:11 [INFO] Executing Step 2: CodeCleaning
+2024-10-22 21:47:11 [INFO] Saving charts to C:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\exports\charts\temp_chart.png
+2024-10-22 21:47:11 [INFO] 
+Code running:
+```
+print('Summary Statistics:')
+print(dfs[0].describe())
+print("""
+Correlation Matrix:""")
+print(dfs[0].corr())
+print("""
+Mean and Standard Deviation:""")
+print(dfs[0].mean())
+print(dfs[0].std())
+print("""
+Median and Quartiles:""")
+print(dfs[0].median())
+print(dfs[0].quantile(0.25))
+print(dfs[0].quantile(0.75))
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs[0])
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result = {'type': 'dataframe', 'value': dfs[0]}
+        ```
+2024-10-22 21:47:12 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 5, in <module>
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\frame.py", line 11049, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\frame.py", line 1993, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\internals\managers.py", line 1694, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\internals\managers.py", line 1753, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'H2O_low'
+
+2024-10-22 21:47:12 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-22 21:47:12 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-22 21:47:12 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-22 21:47:12 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C14H26,methyl-nonadecyl-sulfide,6.83287,1315.084,235.009,177,388.0
+C2F4,ethyl-nonyl-sulfide,7.2698,405.42,211.72,24,141.0
+C3H9N,1-cyclohexylundecane,7.73719,1404.7,195.848,209,277.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give a full statistical analysis to the dataframe
+
+You generated this python code:
+print('Summary Statistics:')
+print(dfs[0].describe())
+print("""
+Correlation Matrix:""")
+print(dfs[0].corr())
+print("""
+Mean and Standard Deviation:""")
+print(dfs[0].mean())
+print(dfs[0].std())
+print("""
+Median and Quartiles:""")
+print(dfs[0].median())
+print(dfs[0].quantile(0.25))
+print(dfs[0].quantile(0.75))
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs[0])
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result = {'type': 'dataframe', 'value': dfs[0]}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 5, in <module>
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\frame.py", line 11049, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\frame.py", line 1993, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\internals\managers.py", line 1694, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\internals\managers.py", line 1753, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'H2O_low'
+
+
+Fix the python code above and return the new python code:
+2024-10-22 21:47:12 [INFO] Executing Step 1: CodeGenerator
+2024-10-22 21:47:12 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:47:12 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C14H26,methyl-nonadecyl-sulfide,6.83287,1315.084,235.009,177,388.0
+C2F4,ethyl-nonyl-sulfide,7.2698,405.42,211.72,24,141.0
+C3H9N,1-cyclohexylundecane,7.73719,1404.7,195.848,209,277.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give a full statistical analysis to the dataframe
+
+You generated this python code:
+print('Summary Statistics:')
+print(dfs[0].describe())
+print("""
+Correlation Matrix:""")
+print(dfs[0].corr())
+print("""
+Mean and Standard Deviation:""")
+print(dfs[0].mean())
+print(dfs[0].std())
+print("""
+Median and Quartiles:""")
+print(dfs[0].median())
+print(dfs[0].quantile(0.25))
+print(dfs[0].quantile(0.75))
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs[0])
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result = {'type': 'dataframe', 'value': dfs[0]}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 5, in <module>
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\frame.py", line 11049, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\frame.py", line 1993, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\internals\managers.py", line 1694, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\internals\managers.py", line 1753, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'H2O_low'
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-22 21:47:12 [INFO] Code generated:
+            ```
+            Python
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+dfs = pd.DataFrame({
+    'Formula', 'Compound', 'A', 'B', 'C', 'Tmin', 'Tmax'
+}, data=[
+    ['C14H26', 'methyl-nonadecyl-sulfide', 6.83287, 1315.084, 235.009, 177, 388.0],
+    ['C2F4', 'ethyl-nonyl-sulfide', 7.2698, 405.42, 211.72, 24, 141.0],
+    ['C3H9N', '1-cyclohexylundecane', 7.73719, 1404.7, 195.848, 209, 277.0]
+])
+
+print('Summary Statistics:')
+print(dfs.describe())
+print("""
+Correlation Matrix:""")
+print(dfs.corr())
+print("""
+Mean and Standard Deviation:""")
+print(dfs.mean())
+print(dfs.std())
+print("""
+Median and Quartiles:""")
+print(dfs.median())
+print(dfs.quantile(0.25))
+print(dfs.quantile(0.75))
+
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs)
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+
+result = {'type': 'dataframe', 'value': dfs}
+            ```
+            
+2024-10-22 21:47:12 [INFO] Executing Step 2: CodeCleaning
+2024-10-22 21:47:12 [INFO] Saving charts to C:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\exports\charts\temp_chart.png
+2024-10-22 21:47:12 [INFO] 
+Code running:
+```
+Python
+print('Summary Statistics:')
+print(dfs.describe())
+print("""
+Correlation Matrix:""")
+print(dfs.corr())
+print("""
+Mean and Standard Deviation:""")
+print(dfs.mean())
+print(dfs.std())
+print("""
+Median and Quartiles:""")
+print(dfs.median())
+print(dfs.quantile(0.25))
+print(dfs.quantile(0.75))
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs)
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result = {'type': 'dataframe', 'value': dfs}
+        ```
+2024-10-22 21:47:12 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+2024-10-22 21:47:12 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-22 21:47:12 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-22 21:47:12 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-22 21:47:12 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C14H26,methyl-nonadecyl-sulfide,6.83287,1315.084,235.009,177,388.0
+C2F4,ethyl-nonyl-sulfide,7.2698,405.42,211.72,24,141.0
+C3H9N,1-cyclohexylundecane,7.73719,1404.7,195.848,209,277.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give a full statistical analysis to the dataframe
+
+You generated this python code:
+Python
+print('Summary Statistics:')
+print(dfs.describe())
+print("""
+Correlation Matrix:""")
+print(dfs.corr())
+print("""
+Mean and Standard Deviation:""")
+print(dfs.mean())
+print(dfs.std())
+print("""
+Median and Quartiles:""")
+print(dfs.median())
+print(dfs.quantile(0.25))
+print(dfs.quantile(0.75))
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs)
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result = {'type': 'dataframe', 'value': dfs}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+
+Fix the python code above and return the new python code:
+2024-10-22 21:47:12 [INFO] Executing Step 1: CodeGenerator
+2024-10-22 21:47:13 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:47:13 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C14H26,methyl-nonadecyl-sulfide,6.83287,1315.084,235.009,177,388.0
+C2F4,ethyl-nonyl-sulfide,7.2698,405.42,211.72,24,141.0
+C3H9N,1-cyclohexylundecane,7.73719,1404.7,195.848,209,277.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give a full statistical analysis to the dataframe
+
+You generated this python code:
+Python
+print('Summary Statistics:')
+print(dfs.describe())
+print("""
+Correlation Matrix:""")
+print(dfs.corr())
+print("""
+Mean and Standard Deviation:""")
+print(dfs.mean())
+print(dfs.std())
+print("""
+Median and Quartiles:""")
+print(dfs.median())
+print(dfs.quantile(0.25))
+print(dfs.quantile(0.75))
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs)
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result = {'type': 'dataframe', 'value': dfs}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-22 21:47:13 [INFO] Code generated:
+            ```
+            Python
+print('Summary Statistics:')
+print(dfs.describe())
+print("Correlation Matrix:")
+print(dfs.corr())
+print("Mean and Standard Deviation:")
+print(dfs.mean())
+print(dfs.std())
+print("Median and Quartiles:")
+print(dfs.median())
+print(dfs.quantile(0.25))
+print(dfs.quantile(0.75))
+
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs)
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+
+result = {'type': 'dataframe', 'value': dfs}
+            ```
+            
+2024-10-22 21:47:13 [INFO] Executing Step 2: CodeCleaning
+2024-10-22 21:47:13 [INFO] Saving charts to C:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\exports\charts\temp_chart.png
+2024-10-22 21:47:13 [INFO] 
+Code running:
+```
+Python
+print('Summary Statistics:')
+print(dfs.describe())
+print('Correlation Matrix:')
+print(dfs.corr())
+print('Mean and Standard Deviation:')
+print(dfs.mean())
+print(dfs.std())
+print('Median and Quartiles:')
+print(dfs.median())
+print(dfs.quantile(0.25))
+print(dfs.quantile(0.75))
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Tmin', y='Tmax', data=dfs)
+plt.title('Temperature Range')
+plt.xlabel('Tmin (°C)')
+plt.ylabel('Tmax (°C)')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result = {'type': 'dataframe', 'value': dfs}
+        ```
+2024-10-22 21:47:13 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+2024-10-22 21:47:13 [ERROR] Pipeline failed on step 6: name 'Python' is not defined
+2024-10-22 21:47:32 [INFO] Question: give a full statistical study to the data
+2024-10-22 21:47:32 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2024-10-22 21:47:32 [INFO] Prompt ID: 445ca173-bcdf-4b60-8f47-a50febb8c256
+2024-10-22 21:47:32 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-22 21:47:32 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-22 21:47:32 [INFO] Executing Step 1: CacheLookup
+2024-10-22 21:47:32 [INFO] Executing Step 2: PromptGeneration
+2024-10-22 21:47:32 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C15H18,hexylbenzene,7.07566,1040.73,204.7,46,375.0
+C3H6CL2,ethyl-propyl-sulfide,6.91845,1437.78,236.261,-20,189.0
+C2CLF5,"2,2-dimethylbutane",6.92367,1448.8,221.946,113,-7.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ give a full statistical study to the data
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-22 21:47:32 [INFO] Executing Step 3: CodeGenerator
+2024-10-22 21:47:33 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:47:33 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C15H18,hexylbenzene,7.07566,1040.73,204.7,46,375.0
+C3H6CL2,ethyl-propyl-sulfide,6.91845,1437.78,236.261,-20,189.0
+C2CLF5,"2,2-dimethylbutane",6.92367,1448.8,221.946,113,-7.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ give a full statistical study to the data
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-22 21:47:33 [INFO] Code generated:
+            ```
+            import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Assume dfs is already declared as a list of DataFrames
+
+# Step 1: Concatenate all DataFrames into one
+df = pd.concat(dfs, ignore_index=True)
+
+# Step 2: Calculate summary statistics
+summary_stats = df.describe()
+
+# Step 3: Calculate correlations between columns
+corr_matrix = df.corr()
+
+# Step 4: Plot histograms for each column
+fig, axs = plt.subplots(1, 7, figsize=(15, 4))
+for i, col in enumerate(df.columns):
+    axs[i].hist(df[col], bins=20)
+    axs[i].set_title(f"Histogram of {col}")
+plt.show()
+
+# Step 5: Calculate and plot boxplots for each column
+fig, axs = plt.subplots(1, 7, figsize=(15, 4))
+for i, col in enumerate(df.columns):
+    axs[i].boxplot(df[col])
+    axs[i].set_title(f"Boxplot of {col}")
+plt.show()
+
+# Step 6: Calculate and plot scatter plots for each pair of columns
+for i in range(len(df.columns)):
+    for j in range(i+1, len(df.columns)):
+        col1 = df.columns[i]
+        col2 = df.columns[j]
+        plt.scatter(df[col1], df[col2])
+        plt.xlabel(col1)
+        plt.ylabel(col2)
+        plt.title(f"Scatter plot of {col1} vs {col2}")
+        plt.savefig(f"{col1}_{col2}.png")
+        plt.close()
+
+# Step 7: Calculate and plot mean and standard deviation for each column
+fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+axs[0].bar(df.columns, df.mean())
+axs[0].set_title("Mean of each column")
+axs[1].bar(df.columns, df.std())
+axs[1].set_title("Standard deviation of each column")
+plt.show()
+
+# Step 8: Calculate and plot correlations heatmap
+plt.imshow(corr_matrix, cmap='coolwarm', interpolation='nearest')
+plt.title("Correlation heatmap")
+plt.colorbar()
+plt.show()
+
+# Step 9: Calculate and plot summary statistics for each column
+fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+axs[0].bar(df.columns, summary_stats.iloc[1, :])  # mean
+axs[0].set_title("Mean of each column")
+axs[1].bar(df.columns, summary_stats.iloc[2, :])  # std
+axs[1].set_title("Standard deviation of each column")
+plt.show()
+
+# Step 10: Declare result variable
+result = {
+    "type": "dataframe",
+    "value": df
+}
+
+# Additional results can be added here
+            ```
+            
+2024-10-22 21:47:33 [INFO] Executing Step 4: CachePopulation
+2024-10-22 21:47:33 [INFO] Executing Step 5: CodeCleaning
+2024-10-22 21:47:33 [INFO] Saving charts to C:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\exports\charts\temp_chart.png
+2024-10-22 21:47:33 [INFO] 
+Code running:
+```
+df = pd.concat(dfs, ignore_index=True)
+summary_stats = df.describe()
+corr_matrix = df.corr()
+fig, axs = plt.subplots(1, 7, figsize=(15, 4))
+for i, col in enumerate(df.columns):
+    axs[i].hist(df[col], bins=20)
+    axs[i].set_title(f'Histogram of {col}')
+plt.show()
+fig, axs = plt.subplots(1, 7, figsize=(15, 4))
+for i, col in enumerate(df.columns):
+    axs[i].boxplot(df[col])
+    axs[i].set_title(f'Boxplot of {col}')
+plt.show()
+for i in range(len(df.columns)):
+    for j in range(i + 1, len(df.columns)):
+        col1 = df.columns[i]
+        col2 = df.columns[j]
+        plt.scatter(df[col1], df[col2])
+        plt.xlabel(col1)
+        plt.ylabel(col2)
+        plt.title(f'Scatter plot of {col1} vs {col2}')
+        plt.savefig(f'C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+        plt.close()
+fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+axs[0].bar(df.columns, df.mean())
+axs[0].set_title('Mean of each column')
+axs[1].bar(df.columns, df.std())
+axs[1].set_title('Standard deviation of each column')
+plt.show()
+plt.imshow(corr_matrix, cmap='coolwarm', interpolation='nearest')
+plt.title('Correlation heatmap')
+plt.colorbar()
+plt.show()
+fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+axs[0].bar(df.columns, summary_stats.iloc[1, :])
+axs[0].set_title('Mean of each column')
+axs[1].bar(df.columns, summary_stats.iloc[2, :])
+axs[1].set_title('Standard deviation of each column')
+plt.show()
+result = {'type': 'dataframe', 'value': df}
+        ```
+2024-10-22 21:47:33 [INFO] Executing Step 6: CodeExecution
+2024-10-22 21:47:33 [ERROR] Failed with error: Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\frame.py", line 11049, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\frame.py", line 1993, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\internals\managers.py", line 1694, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\internals\managers.py", line 1753, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'H2O_low'
+
+2024-10-22 21:47:33 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-22 21:47:33 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-22 21:47:33 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-22 21:47:33 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C15H18,hexylbenzene,7.07566,1040.73,204.7,46,375.0
+C3H6CL2,ethyl-propyl-sulfide,6.91845,1437.78,236.261,-20,189.0
+C2CLF5,"2,2-dimethylbutane",6.92367,1448.8,221.946,113,-7.0
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ give a full statistical study to the data
+
+You generated this python code:
+df = pd.concat(dfs, ignore_index=True)
+summary_stats = df.describe()
+corr_matrix = df.corr()
+fig, axs = plt.subplots(1, 7, figsize=(15, 4))
+for i, col in enumerate(df.columns):
+    axs[i].hist(df[col], bins=20)
+    axs[i].set_title(f'Histogram of {col}')
+plt.show()
+fig, axs = plt.subplots(1, 7, figsize=(15, 4))
+for i, col in enumerate(df.columns):
+    axs[i].boxplot(df[col])
+    axs[i].set_title(f'Boxplot of {col}')
+plt.show()
+for i in range(len(df.columns)):
+    for j in range(i + 1, len(df.columns)):
+        col1 = df.columns[i]
+        col2 = df.columns[j]
+        plt.scatter(df[col1], df[col2])
+        plt.xlabel(col1)
+        plt.ylabel(col2)
+        plt.title(f'Scatter plot of {col1} vs {col2}')
+        plt.savefig(f'C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+        plt.close()
+fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+axs[0].bar(df.columns, df.mean())
+axs[0].set_title('Mean of each column')
+axs[1].bar(df.columns, df.std())
+axs[1].set_title('Standard deviation of each column')
+plt.show()
+plt.imshow(corr_matrix, cmap='coolwarm', interpolation='nearest')
+plt.title('Correlation heatmap')
+plt.colorbar()
+plt.show()
+fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+axs[0].bar(df.columns, summary_stats.iloc[1, :])
+axs[0].set_title('Mean of each column')
+axs[1].bar(df.columns, summary_stats.iloc[2, :])
+axs[1].set_title('Standard deviation of each column')
+plt.show()
+result = {'type': 'dataframe', 'value': df}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 3, in <module>
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\frame.py", line 11049, in corr
+    mat = data.to_numpy(dtype=float, na_value=np.nan, copy=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\frame.py", line 1993, in to_numpy
+    result = self._mgr.as_array(dtype=dtype, copy=copy, na_value=na_value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\internals\managers.py", line 1694, in as_array
+    arr = self._interleave(dtype=dtype, na_value=na_value)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\.venv\Lib\site-packages\pandas\core\internals\managers.py", line 1753, in _interleave
+    result[rl.indexer] = arr
+    ~~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'H2O_low'
+
+
+Fix the python code above and return the new python code:
+2024-10-22 21:47:33 [INFO] Executing Step 1: CodeGenerator
+2024-10-22 21:47:34 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:47:34 [ERROR] Pipeline failed on step 1: No code found in the response
+2024-10-22 21:47:34 [ERROR] Pipeline failed on step 6: No code found in the response
+2024-10-22 21:47:40 [INFO] Question: give a full study to the data
+2024-10-22 21:47:40 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2024-10-22 21:47:40 [INFO] Prompt ID: bb29f740-8d77-4da2-890d-a185c060200c
+2024-10-22 21:47:40 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-22 21:47:40 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-22 21:47:40 [INFO] Executing Step 1: CacheLookup
+2024-10-22 21:47:40 [INFO] Executing Step 2: PromptGeneration
+2024-10-22 21:47:40 [INFO] Using prompt: <dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C8H18,m-methylstyrene,7.50288,1471.0,207.14,-37,349.0
+C6H5F,"1,2,4-trimethylbenzene",7.0735,1257.6,232.965,153,285.0
+C18H38S,"3,5-dimethyloctane",7.00756,1324.049,241.54,13,116.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ give a full study to the data
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-22 21:47:40 [INFO] Executing Step 3: CodeGenerator
+2024-10-22 21:47:41 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-22 21:47:41 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:699x7
+Formula,Compound,A,B,C,Tmin,Tmax
+C8H18,m-methylstyrene,7.50288,1471.0,207.14,-37,349.0
+C6H5F,"1,2,4-trimethylbenzene",7.0735,1257.6,232.965,153,285.0
+C18H38S,"3,5-dimethyloctane",7.00756,1324.049,241.54,13,116.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ give a full study to the data
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-22 21:47:41 [INFO] Code generated:
+            ```
+            # Import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Initialize the dfs list
+dfs = [
+    pd.DataFrame({
+        "Formula", "Compound", "A", "B", "C", "Tmin", "Tmax"
+    }, [
+        ["C8H18", "m-methylstyrene", 7.50288, 1471.0, 207.14, -37, 349.0],
+        ["C6H5F", "1,2,4-trimethylbenzene", 7.0735, 1257.6, 232.965, 153, 285.0],
+        ["C18H38S", "3,5-dimethyloctane", 7.00756, 1324.049, 241.54, 13, 116.0]
+    ])
+]
+
+# Study the data
+result = {}
+
+# Unique compounds
+compounds = dfs[0]["Compound"].unique()
+result["type"] = "string"
+result["value"] = f"There are {len(compounds)} unique compounds in the data."
+
+# Average values
+average_values = dfs[0][["A", "B", "C"]].mean()
+result["type"] = "dataframe"
+result["value"] = pd.DataFrame({"Average": average_values}, index=["A", "B", "C"])
+
+# Find the compound with the highest Tmin
+min_Tmin = dfs[0]["Tmin"].min()
+result["type"] = "string"
+result["value"] = f"The compound with the lowest Tmin is {dfs[0].loc[dfs[0]['Tmin'] == min_Tmin, 'Compound'].values[0]} with Tmin = {min_Tmin}."
+
+# Plot a chart
+plt.figure(figsize=(8, 6))
+plt.scatter(dfs[0]["Tmin"], dfs[0]["Tmax"])
+plt.xlabel("Tmin")
+plt.ylabel("Tmax")
+plt.title("Tmin vs Tmax")
+plt.savefig("temp_chart.png")
+result["type"] = "plot"
+result["value"] = "temp_chart.png"
+
+print(result)
+            ```
+            
+2024-10-22 21:47:41 [INFO] Executing Step 4: CachePopulation
+2024-10-22 21:47:41 [INFO] Executing Step 5: CodeCleaning
+2024-10-22 21:47:41 [INFO] Saving charts to C:\Users\anass\Documents\GitHub\analytics-using-pandas-ai\exports\charts\temp_chart.png
+2024-10-22 21:47:41 [INFO] 
+Code running:
+```
+result = {}
+compounds = dfs[0]['Compound'].unique()
+result['type'] = 'string'
+result['value'] = f'There are {len(compounds)} unique compounds in the data.'
+average_values = dfs[0][['A', 'B', 'C']].mean()
+result['type'] = 'dataframe'
+result['value'] = pd.DataFrame({'Average': average_values}, index=['A', 'B', 'C'])
+min_Tmin = dfs[0]['Tmin'].min()
+result['type'] = 'string'
+result['value'] = f"The compound with the lowest Tmin is {dfs[0].loc[dfs[0]['Tmin'] == min_Tmin, 'Compound'].values[0]} with Tmin = {min_Tmin}."
+plt.figure(figsize=(8, 6))
+plt.scatter(dfs[0]['Tmin'], dfs[0]['Tmax'])
+plt.xlabel('Tmin')
+plt.ylabel('Tmax')
+plt.title('Tmin vs Tmax')
+plt.savefig('C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png')
+result['type'] = 'plot'
+result['value'] = 'C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png'
+print(result)
+        ```
+2024-10-22 21:47:41 [INFO] Executing Step 6: CodeExecution
+2024-10-22 21:47:41 [INFO] Executing Step 7: ResultValidation
+2024-10-22 21:47:41 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/anass/Documents/GitHub/analytics-using-pandas-ai/exports/charts/temp_chart.png'}
+2024-10-22 21:47:41 [INFO] Executing Step 8: ResultParsing
