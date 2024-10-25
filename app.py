@@ -4,6 +4,9 @@ import pandas as pd
 from pandasai import SmartDataframe
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
+import matplotlib.pyplot as plt
+from PIL import Image
+import io
 
 # Load the environment variables
 load_dotenv()
@@ -38,9 +41,28 @@ if uploaded_file is not None:
             if prompt:
                 with st.spinner("Generating response..."):
                     try:
-                        # Using PandasAI to generate response based on the dataframe
+                        # Generate response
                         response = df.chat(prompt)
-                        st.write(response)
+                        
+                        # Check if response is a saved chart path, load it and display
+                        if isinstance(response, str) and "temp_chart.png" in response:
+                            image = Image.open(response)  # Open the image from the saved path
+                            st.image(image)  # Display the image in Streamlit
+                            
+                            # Convert image to bytes for download
+                            img_byte_arr = io.BytesIO()
+                            image.save(img_byte_arr, format='PNG')
+                            img_byte_arr = img_byte_arr.getvalue()
+                            
+                            # Add download button
+                            st.download_button(
+                                label="Download Chart",
+                                data=img_byte_arr,
+                                file_name="generated_chart.png",
+                                mime="image/png"
+                            )
+                        else:
+                            st.write(response)
                     except Exception as e:
                         st.error(f"Failed to generate response: {e}")
     except Exception as e:
