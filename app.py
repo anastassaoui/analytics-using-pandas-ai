@@ -101,3 +101,4 @@ if uploaded_file is not None:
                             st.error(f"Failed to generate response with PandasAI: {e}")
     except Exception as e:
         st.error(f"Error processing file: {e}")
+#lol
